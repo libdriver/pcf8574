@@ -46,7 +46,7 @@
 #define MAX_CURRENT               200.0f               /**< chip max current */
 #define TEMPERATURE_MIN           -40.0f               /**< chip min operating temperature */
 #define TEMPERATURE_MAX           85.0f                /**< chip max operating temperature */
-#define DRIVER_VERSION            2000                 /**< driver version */
+#define DRIVER_VERSION            1000                 /**< driver version */
 
 /**
  * @brief     set the address pin

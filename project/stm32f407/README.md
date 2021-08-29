@@ -54,7 +54,7 @@ pcf8574 -i
 pcf8574: chip is NXP PCF8574.
 pcf8574: manufacturer is NXP.
 pcf8574: interface is IIC.
-pcf8574: driver version is 2.0.
+pcf8574: driver version is 1.0.
 pcf8574: min supply voltage is 2.5V.
 pcf8574: max supply voltage is 6.0V.
 pcf8574: max current is 200.00mA.
