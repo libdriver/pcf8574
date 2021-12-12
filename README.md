@@ -4,7 +4,7 @@
 
 ## LibDriver PCF8574
 
-[English](/README.md) | [ 简体中文](/README_CN.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
 
 The PCF8574/74A provides general-purpose remote I/O expansion via the two-wire bidirectional I2C-bus (serial clock (SCL), serial data (SDA)).The devices consist of eight quasi-bidirectional ports, 100 kHz I2C-bus interface, three hardware address inputs and interrupt output operating between 2.5 V and 6 V. The quasi-bidirectional port can be independently assigned as an input to monitor interrupt status or keypads, or as an output to activate indicator devices such as LEDs. System master can read from the input port or write to the output port through a single register. The low current consumption of 2.5 uA (typical, static) is great for mobile applications and the latched output ports directly drive LEDs.The PCF8574 and PCF8574A are identical, except for the different fixed portion of the slave address. The three hardware address pins allow eight of each device to be on the same I2C-bus, so there can be up to 16 of these I/O expanders PCF8574/74A together on the same I2C-bus, supporting up to 128 I/Os (for example, 128 LEDs).The active LOW open-drain interrupt output (INT) can be connected to the interrupt logic of the microcontroller and is activated when any input state differs from its corresponding input port register state. It is used to indicate to the microcontroller that an input state has changed and the device needs to be interrogated without the microcontroller continuously polling the input register via the I2C-bus.The internal Power-On Reset (POR) initializes the I/Os as inputs with a weak internal pull-up 100 uA current source. PCF8574 is used in LED signs and displays, servers, key pads, industrial control, medical equipment, PLC, cellular telephones, mobile devices, gaming machines and instrumentation test measurement.
 
@@ -97,7 +97,7 @@ Please sent an e-mail to lishifenging@outlook.com
 
 ### License
 
-Copyright (C) LibDriver 2015-2021 All rights reserved 
+Copyright (c) 2015 - present LibDriver All rights reserved
 
 
 
