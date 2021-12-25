@@ -12,7 +12,7 @@
  * </table>
  *
  *
- * <h3><center>Copyright (C) LibDriver
+ * <h3><center>Copyright (c) LibDriver
  * All rights reserved.</center></h3>
  *
  * The MIT License (MIT)
