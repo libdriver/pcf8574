@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver PCF8574
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/pcf8574/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 PCF8574是一款硅CMOS电路。通过两路双向总线（I²C总线）为大多数微控制器系列提供通用远程I/O扩展。器件由8位准双向端口和I²C总线接口组成。PCF8574具有低电流消耗且包含具备高电流驱动能力的锁存输出，用于直接驱动LED。还具有中断线路(INT)，可连接至微控制器的中断逻辑。通过在此线路发送中断信号，远程I/O可通知微控制器其端口上是否存在输入数据而无需通过I²C总线通信。这表示PCF8574依然是简单的从器件。PCF8574用于LED和显示器、服务器、键盘、工业控制、医疗设备、PLC、移动电话、移动设备、游戏机和仪器测试测量。
 
