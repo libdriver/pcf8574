@@ -49,8 +49,8 @@ static pcf8574_handle_t gs_handle;        /**< pcf8574 handle */
  */
 uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
 {
-    volatile uint8_t res;
-    volatile uint32_t i;
+    uint8_t res;
+    uint32_t i;
     pcf8574_info_t info;
     pcf8574_pin_level_t level;
     
@@ -65,7 +65,7 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
     
     /* pcf8574 info */
     res = pcf8574_info(&info);
-    if (res)
+    if (res != 0)
     {
         pcf8574_interface_debug_print("pcf8574: get info failed.\n");
        
@@ -87,7 +87,7 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
     
     /* set addr pin */
     res = pcf8574_set_addr_pin(&gs_handle, addr);
-    if (res)
+    if (res != 0)
     {
         pcf8574_interface_debug_print("pcf8574: set addr pin failed.\n");
        
@@ -96,7 +96,7 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
     
     /* pcf8574 init */
     res = pcf8574_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         pcf8574_interface_debug_print("pcf8574: init failed.\n");
        
@@ -110,10 +110,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
     {
         /* read pin 0 */
         res = pcf8574_read(&gs_handle, PCF8574_PIN_0, &level);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: read failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -121,10 +121,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* read pin 1 */
         res = pcf8574_read(&gs_handle, PCF8574_PIN_1, &level);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: read failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -132,10 +132,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* read pin 2 */
         res = pcf8574_read(&gs_handle, PCF8574_PIN_2, &level);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: read failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -143,10 +143,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* read pin 3 */
         res = pcf8574_read(&gs_handle, PCF8574_PIN_3, &level);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: read failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -154,10 +154,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* write pin 4 */
         res = pcf8574_write(&gs_handle, PCF8574_PIN_4, PCF8574_PIN_LEVEL_LOW);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: write failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -165,10 +165,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* write pin 5 */
         res = pcf8574_write(&gs_handle, PCF8574_PIN_5, PCF8574_PIN_LEVEL_HIGH);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: write failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -176,10 +176,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* write pin 6 */
         res = pcf8574_write(&gs_handle, PCF8574_PIN_6, PCF8574_PIN_LEVEL_LOW);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: write failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -187,10 +187,10 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         
         /* write pin 7 */
         res = pcf8574_write(&gs_handle, PCF8574_PIN_7, PCF8574_PIN_LEVEL_HIGH);
-        if (res)
+        if (res != 0)
         {
             pcf8574_interface_debug_print("pcf8574: write failed.\n");
-            pcf8574_deinit(&gs_handle);
+            (void)pcf8574_deinit(&gs_handle);
            
             return 1;
         }
@@ -202,7 +202,7 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
     
     /* finish read test */
     pcf8574_interface_debug_print("pcf8574: finish read write test.\n");  
-    pcf8574_deinit(&gs_handle);
+    (void)pcf8574_deinit(&gs_handle);
     
     return 0;
 }

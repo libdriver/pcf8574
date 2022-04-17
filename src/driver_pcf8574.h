@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_PCF8574_H_
-#define _DRIVER_PCF8574_H_
+#ifndef DRIVER_PCF8574_H
+#define DRIVER_PCF8574_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -106,7 +106,7 @@ typedef struct pcf8574_handle_s
     uint8_t (*iic_read_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);         /**< point to a iic_read_cmd function address */
     uint8_t (*iic_write_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);        /**< point to a iic_write_cmd function address */
     void (*delay_ms)(uint32_t ms);                                             /**< point to a delay_ms function address */
-    uint16_t (*debug_print)(char *fmt, ...);                                   /**< point to a debug_print function address */
+    void (*debug_print)(const char *const fmt, ...);                           /**< point to a debug_print function address */
     uint8_t inited;                                                            /**< inited flag */
 } pcf8574_handle_t;
 

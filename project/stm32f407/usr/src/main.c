@@ -123,8 +123,8 @@ uint8_t pcf8574(uint8_t argc, char **argv)
             {
                 if (strcmp("-a", argv[4]) == 0)
                 {
-                    volatile uint8_t res;
-                    volatile uint32_t times;
+                    uint8_t res;
+                    uint32_t times;
                     pcf8574_address_t addr;
                     
                     if (strcmp("0", argv[5]) == 0)
@@ -169,7 +169,7 @@ uint8_t pcf8574(uint8_t argc, char **argv)
                     
                     /* run test */
                     res = pcf8574_read_write_test(addr, times);
-                    if (res)
+                    if (res != 0)
                     {
                         return 1;
                     }
@@ -203,7 +203,7 @@ uint8_t pcf8574(uint8_t argc, char **argv)
                 {
                     if (strcmp("-a", argv[4]) == 0)
                     {
-                        volatile uint8_t res;
+                        uint8_t res;
                         pcf8574_address_t addr;
                         pcf8574_pin_t pin;
                         pcf8574_pin_level_t level;
@@ -285,23 +285,23 @@ uint8_t pcf8574(uint8_t argc, char **argv)
                             
                             /* basic init */
                             res = pcf8574_basic_init(addr);
-                            if (res)
+                            if (res != 0)
                             {
                                 return 1;
                             }
                             
                             /* read pin */
                             res = pcf8574_basic_read(pin, (pcf8574_pin_level_t *)&level);
-                            if (res)
+                            if (res != 0)
                             {
-                                pcf8574_basic_deinit();
+                                (void)pcf8574_basic_deinit();
                                 
                                 return 1;
                             }
                             else
                             {
                                 pcf8574_interface_debug_print("pcf8574: read %d pin is %d.\n", pin, level);
-                                pcf8574_basic_deinit();
+                                (void)pcf8574_basic_deinit();
                                 
                                 return 0;
                             }
@@ -341,7 +341,7 @@ uint8_t pcf8574(uint8_t argc, char **argv)
                 {
                     if (strcmp("-a", argv[5]) == 0)
                     {
-                        volatile uint8_t res;
+                        uint8_t res;
                         pcf8574_address_t addr;
                         pcf8574_pin_t pin;
                         pcf8574_pin_level_t level;
@@ -435,23 +435,23 @@ uint8_t pcf8574(uint8_t argc, char **argv)
                             
                             /* basic init */
                             res = pcf8574_basic_init(addr);
-                            if (res)
+                            if (res != 0)
                             {
                                 return 1;
                             }
                             
                             /* write pin */
                             res = pcf8574_basic_write(pin, level);
-                            if (res)
+                            if (res != 0)
                             {
-                                pcf8574_basic_deinit();
+                                (void)pcf8574_basic_deinit();
                                 
                                 return 1;
                             }
                             else
                             {
                                 pcf8574_interface_debug_print("pcf8574: write %d pin level %d.\n", pin, level);
-                                pcf8574_basic_deinit();
+                                (void)pcf8574_basic_deinit();
                                 
                                 return 0;
                             }
@@ -494,7 +494,7 @@ uint8_t pcf8574(uint8_t argc, char **argv)
  */
 int main(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* stm32f407 clock init and hal init */
     clock_init();

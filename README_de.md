@@ -1,0 +1,145 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
+
+<div align=center>
+<img src="/doc/image/logo.png"/>
+</div>
+
+## LibDriver PCF8574
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/pcf8574/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE) 
+
+Der PCF8574/74A bietet eine Allzweck-Remote-I/O-Erweiterung über den bidirektionalen Zweidraht-I2C-Bus (serielle Uhr (SCL), serielle Daten (SDA)). Die Geräte bestehen aus acht quasi-bidirektionalen Ports, 100-kHz-I2C- Busschnittstelle, drei Hardware-Adresseingänge und Interrupt-Ausgang, der zwischen 2,5 V und 6 V betrieben wird. Der quasi-bidirektionale Port kann unabhängig als Eingang zur Überwachung des Interrupt-Status oder von Tastaturen oder als Ausgang zur Aktivierung von Anzeigegeräten wie LEDs zugewiesen werden. Der Systemmaster kann über ein einziges Register vom Eingangsport lesen oder in den Ausgangsport schreiben. Der niedrige Stromverbrauch von 2,5 uA (typisch, statisch) ist großartig für mobile Anwendungen und die verriegelten Ausgangsports treiben LEDs direkt an. Der PCF8574 und der PCF8574A sind identisch, mit Ausnahme des unterschiedlichen festen Teils der Slave-Adresse. Die drei Hardware-Adresspins ermöglichen acht von jedem Gerät, sich auf demselben I2C-Bus zu befinden, sodass bis zu 16 dieser I/O-Expander PCF8574/74A zusammen auf demselben I2C-Bus sein können und bis zu 128 I/Os unterstützen (z. B. 128 LEDs). Der aktive LOW-Open-Drain-Interrupt-Ausgang (INT) kann mit der Interrupt-Logik des Mikrocontrollers verbunden werden und wird aktiviert, wenn sich ein Eingangszustand von seinem entsprechenden Eingangsport-Registerzustand unterscheidet. Es wird verwendet, um dem Mikrocontroller anzuzeigen, dass sich ein Eingangszustand geändert hat und das Gerät abgefragt werden muss, ohne dass der Mikrocontroller kontinuierlich das Eingangsregister über den I2C-Bus abfragt. Der interne Power-On-Reset (POR) initialisiert die I/Os als Eingänge mit einer schwachen internen Pull-up-100-µA-Stromquelle. PCF8574 wird in LED-Schildern und -Displays, Servern, Tastenfeldern, Industriesteuerungen, medizinischen Geräten, SPS, Mobiltelefonen, Mobilgeräten, Spielautomaten und Instrumententestmessungen verwendet.
+
+LibDriver PCF8574 ist ein Treiber mit vollem Funktionsumfang von PCF8574, der von LibDriver gestartet wurde. Er bietet E/A-Schreiben, E/A-Lesen und andere Funktionen. LibDriver ist MISRA-konform.
+
+### Inhaltsverzeichnis
+
+  - [Anweisung](#Anweisung)
+  - [Installieren](#Installieren)
+  - [Nutzung](#Nutzung)
+    - [example basic](#example-basic)
+  - [Dokument](#Dokument)
+  - [Beitrag](#Beitrag)
+  - [Lizenz](#Lizenz)
+  - [Kontaktieren Sie uns](#Kontaktieren-Sie-uns)
+
+### Anweisung
+
+/src enthält LibDriver PCF8574-Quelldateien.
+
+/interface enthält die plattformunabhängige Vorlage LibDriver PCF8574 IIC。
+
+/test enthält den Testcode des LibDriver PCF8574-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+
+/example enthält LibDriver PCF8574-Beispielcode.
+
+/doc enthält das LibDriver PCF8574-Offlinedokument.
+
+/Datenblatt enthält PCF8574-Datenblatt。
+
+/project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
+
+### Installieren
+
+Verweisen Sie auf eine plattformunabhängige IIC-Schnittstellenvorlage und stellen Sie Ihren Plattform-IIC-Treiber fertig.
+
+Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
+
+### Nutzung
+
+#### example basic
+
+```C
+uint8_t res;
+pcf8574_pin_level_t level;
+
+/* basic init */
+res = pcf8574_basic_init(PCF8574_ADDRESS_A000);
+if (res != 0)
+{
+    return 1;
+}
+
+...
+
+/* read pin */
+res = pcf8574_basic_read(PCF8574_PIN_0, (pcf8574_pin_level_t *)&level);
+if (res != 0)
+{
+    (void)pcf8574_basic_deinit();
+
+    return 1;
+}
+
+/* write pin */
+res = pcf8574_basic_write(PCF8574_PIN_0, PCF8574_PIN_LEVEL_HIGH);
+if (res != 0)
+{
+    (void)pcf8574_basic_deinit();
+
+    return 1;
+}
+
+...
+
+(void)pcf8574_basic_deinit();
+
+return 0;
+```
+
+### Dokument
+
+Online-Dokumente: https://www.libdriver.com/docs/pcf8574/index.html
+
+Offline-Dokumente: /doc/html/index.html
+
+### Beitrag
+
+Bitte senden Sie eine E-Mail an lishifenging@outlook.com
+
+### Lizenz
+
+Urheberrechte © (c) 2015 - Gegenwart LibDriver Alle Rechte vorbehalten
+
+
+
+Die MIT-Lizenz (MIT)
+
+
+
+Hiermit wird jeder Person kostenlos die Erlaubnis erteilt, eine Kopie zu erhalten
+
+dieser Software und zugehörigen Dokumentationsdateien (die „Software“) zu behandeln
+
+in der Software ohne Einschränkung, einschließlich, aber nicht beschränkt auf die Rechte
+
+zu verwenden, zu kopieren, zu modifizieren, zusammenzuführen, zu veröffentlichen, zu verteilen, unterzulizenzieren und/oder zu verkaufen
+
+Kopien der Software und Personen, denen die Software gehört, zu gestatten
+
+dazu eingerichtet werden, unter folgenden Bedingungen:
+
+
+
+Der obige Urheberrechtshinweis und dieser Genehmigungshinweis müssen in allen enthalten sein
+
+Kopien oder wesentliche Teile der Software.
+
+
+
+DIE SOFTWARE WIRD "WIE BESEHEN" BEREITGESTELLT, OHNE JEGLICHE GEWÄHRLEISTUNG, AUSDRÜCKLICH ODER
+
+STILLSCHWEIGEND, EINSCHLIESSLICH, ABER NICHT BESCHRÄNKT AUF DIE GEWÄHRLEISTUNG DER MARKTGÄNGIGKEIT,
+
+EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG VON RECHTEN DRITTER. IN KEINEM FALL DARF DAS
+
+AUTOREN ODER URHEBERRECHTSINHABER HAFTEN FÜR JEGLICHE ANSPRÜCHE, SCHÄDEN ODER ANDERE
+
+HAFTUNG, OB AUS VERTRAG, DELIKT ODER ANDERWEITIG, ENTSTEHEND AUS,
+
+AUS ODER IM ZUSAMMENHANG MIT DER SOFTWARE ODER DER VERWENDUNG ODER ANDEREN HANDLUNGEN MIT DER
+
+SOFTWARE.
+
+### Kontaktieren Sie uns
+
+Bitte senden Sie eine E-Mail an lishifenging@outlook.com
