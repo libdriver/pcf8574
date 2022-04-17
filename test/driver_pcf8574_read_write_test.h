@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_PCF8574_READ_WRITE_TEST_H_
-#define _DRIVER_PCF8574_READ_WRITE_TEST_H_
+#ifndef DRIVER_PCF8574_READ_WRITE_TEST_H
+#define DRIVER_PCF8574_READ_WRITE_TEST_H
 
 #include "driver_pcf8574_interface.h"
 

@@ -48,7 +48,7 @@ static pcf8574_handle_t gs_handle;        /**< pcf8574 handle */
  */
 uint8_t pcf8574_basic_init(pcf8574_address_t addr)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     /* link functions */
     DRIVER_PCF8574_LINK_INIT(&gs_handle, pcf8574_handle_t);
@@ -61,7 +61,7 @@ uint8_t pcf8574_basic_init(pcf8574_address_t addr)
     
     /* set addr pin */
     res = pcf8574_set_addr_pin(&gs_handle, addr);
-    if (res)
+    if (res != 0)
     {
         pcf8574_interface_debug_print("pcf8574: set addr pin failed.\n");
        
@@ -70,7 +70,7 @@ uint8_t pcf8574_basic_init(pcf8574_address_t addr)
     
     /* pcf8574 init */
     res = pcf8574_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         pcf8574_interface_debug_print("pcf8574: init failed.\n");
        
@@ -89,7 +89,7 @@ uint8_t pcf8574_basic_init(pcf8574_address_t addr)
  */
 uint8_t pcf8574_basic_deinit(void)
 {
-    if (pcf8574_deinit(&gs_handle))
+    if (pcf8574_deinit(&gs_handle) != 0)
     {
         return 1;
     }
@@ -110,7 +110,7 @@ uint8_t pcf8574_basic_deinit(void)
  */
 uint8_t pcf8574_basic_read(pcf8574_pin_t pin, pcf8574_pin_level_t *level)
 {
-    if (pcf8574_read(&gs_handle, pin, level))
+    if (pcf8574_read(&gs_handle, pin, level) != 0)
     {
         return 1;
     }
@@ -131,7 +131,7 @@ uint8_t pcf8574_basic_read(pcf8574_pin_t pin, pcf8574_pin_level_t *level)
  */
 uint8_t pcf8574_basic_write(pcf8574_pin_t pin, pcf8574_pin_level_t level)
 {
-    if (pcf8574_write(&gs_handle, pin, level))
+    if (pcf8574_write(&gs_handle, pin, level) != 0)
     {
         return 1;
     }

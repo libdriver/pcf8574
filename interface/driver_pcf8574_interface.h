@@ -34,8 +34,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_PCF8574_INTERFACE_H_
-#define _DRIVER_PCF8574_INTERFACE_H_
+#ifndef DRIVER_PCF8574_INTERFACE_H
+#define DRIVER_PCF8574_INTERFACE_H
 
 #include "driver_pcf8574.h"
 
@@ -102,10 +102,9 @@ void pcf8574_interface_delay_ms(uint32_t ms);
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t pcf8574_interface_debug_print(char *fmt, ...);
+void pcf8574_interface_debug_print(const char *const fmt, ...);
 
 /**
  * @}

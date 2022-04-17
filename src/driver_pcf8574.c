@@ -59,15 +59,15 @@
  */
 uint8_t pcf8574_set_addr_pin(pcf8574_handle_t *handle, pcf8574_address_t addr_pin)
 {
-    if (handle == NULL)                       /* check handle */
+    if (handle == NULL)                                  /* check handle */
     {
-        return 2;                             /* return error */
+        return 2;                                        /* return error */
     }
 
-    handle->iic_addr = 0x40;                  /* set iic addr */
-    handle->iic_addr |= addr_pin << 1;        /* set iic address */
+    handle->iic_addr = 0x40;                             /* set iic addr */
+    handle->iic_addr |= (uint8_t)(addr_pin << 1);        /* set iic address */
     
-    return 0;                                 /* success return 0 */
+    return 0;                                            /* success return 0 */
 }
 
 /**
@@ -104,7 +104,7 @@ uint8_t pcf8574_get_addr_pin(pcf8574_handle_t *handle, pcf8574_address_t *addr_p
  */
 uint8_t pcf8574_init(pcf8574_handle_t *handle)
 {
-    volatile uint8_t data;
+    uint8_t data;
     
     if (handle == NULL)                                                  /* check handle */
     {
@@ -145,7 +145,7 @@ uint8_t pcf8574_init(pcf8574_handle_t *handle)
         return 3;                                                        /* return error */
     }
     
-    if (handle->iic_init())                                              /* iic init */
+    if (handle->iic_init() != 0)                                         /* iic init */
     {
         handle->debug_print("pcf8574: iic init failed.\n");              /* iic init failed */
        
@@ -153,8 +153,7 @@ uint8_t pcf8574_init(pcf8574_handle_t *handle)
     }
     data = 0xFF;                                                         /* set 0xFF */
     if (handle->iic_write_cmd(handle->iic_addr, 
-                             (uint8_t *)&data, 1)
-                             )                                           /* write all pin high level */
+                             (uint8_t *)&data, 1) != 0)                  /* write all pin high level */
     {
         handle->debug_print("pcf8574: iic write failed.\n");             /* iic write failed */
        
@@ -177,7 +176,7 @@ uint8_t pcf8574_init(pcf8574_handle_t *handle)
  */
 uint8_t pcf8574_deinit(pcf8574_handle_t *handle)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     if (handle == NULL)                                              /* check handle */
     {
@@ -189,7 +188,7 @@ uint8_t pcf8574_deinit(pcf8574_handle_t *handle)
     }
     
     res = handle->iic_deinit();                                      /* iic deinit */
-    if (res)                                                         /* check error */
+    if (res != 0)                                                    /* check error */
     {
         handle->debug_print("pcf8574: iic deinit failed.\n");        /* iic deinit failed */
        
@@ -214,8 +213,8 @@ uint8_t pcf8574_deinit(pcf8574_handle_t *handle)
  */
 uint8_t pcf8574_read(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_level_t *level)
 {
-    volatile uint8_t res;
-    volatile uint8_t data;
+    uint8_t res;
+    uint8_t data;
     
     if (handle == NULL)                                                       /* check handle */
     {
@@ -227,7 +226,7 @@ uint8_t pcf8574_read(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_le
     }
     
     res = handle->iic_read_cmd(handle->iic_addr, (uint8_t *)&data, 1);        /* read data */
-    if (res)                                                                  /* check error */
+    if (res != 0)                                                             /* check error */
     {
         handle->debug_print("pcf8574: iic read failed.\n");                   /* iic read failed */
        
@@ -252,8 +251,8 @@ uint8_t pcf8574_read(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_le
  */
 uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_level_t level)
 {
-    volatile uint8_t res;
-    volatile uint8_t data;
+    uint8_t res;
+    uint8_t data;
     
     if (handle == NULL)                                                       /* check handle */
     {
@@ -265,7 +264,7 @@ uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_l
     }
     
     res = handle->iic_read_cmd(handle->iic_addr, (uint8_t *)&data, 1);        /* read data */
-    if (res)                                                                  /* check error */
+    if (res != 0)                                                             /* check error */
     {
         handle->debug_print("pcf8574: iic read failed.\n");                   /* iic read failed */
        
@@ -273,7 +272,7 @@ uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_l
     }
     data |= level << pin;                                                     /* set data */
     res = handle->iic_write_cmd(handle->iic_addr, (uint8_t *)&data, 1);       /* write data */
-    if (res)                                                                  /* check error */
+    if (res != 0)                                                             /* check error */
     {
         handle->debug_print("pcf8574: iic write failed.\n");                  /* iic write failed */
        
@@ -297,16 +296,23 @@ uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_l
  */
 uint8_t pcf8574_set_reg(pcf8574_handle_t *handle, uint8_t *buf, uint16_t len)
 {
-    if (handle == NULL)                                              /* check handle */
+    if (handle == NULL)                                                /* check handle */
     {
-        return 2;                                                    /* return error */
+        return 2;                                                      /* return error */
     }
-    if (handle->inited != 1)                                         /* check handle initialization */
+    if (handle->inited != 1)                                           /* check handle initialization */
     {
-        return 3;                                                    /* return error */
+        return 3;                                                      /* return error */
     }
     
-    return handle->iic_write_cmd(handle->iic_addr, buf, len);        /* write command */
+    if (handle->iic_write_cmd(handle->iic_addr, buf, len) != 0)        /* write command */
+    {
+        return 1;                                                      /* return error */
+    }
+    else
+    {
+        return 0;                                                      /* success return 0 */
+    }
 }
 
 /**
@@ -323,16 +329,23 @@ uint8_t pcf8574_set_reg(pcf8574_handle_t *handle, uint8_t *buf, uint16_t len)
  */
 uint8_t pcf8574_get_reg(pcf8574_handle_t *handle, uint8_t *buf, uint16_t len)
 {
-    if (handle == NULL)                                             /* check handle */
+    if (handle == NULL)                                               /* check handle */
     {
-        return 2;                                                   /* return error */
+        return 2;                                                     /* return error */
     }
-    if (handle->inited != 1)                                        /* check handle initialization */
+    if (handle->inited != 1)                                          /* check handle initialization */
     {
-        return 3;                                                   /* return error */
+        return 3;                                                     /* return error */
     }
     
-    return handle->iic_read_cmd(handle->iic_addr, buf, len);        /* read command */
+    if (handle->iic_read_cmd(handle->iic_addr, buf, len) != 0)        /* read command */
+    {
+        return 1;                                                     /* return error */
+    }
+    else
+    {
+        return 0;                                                     /* success return 0 */
+    }
 }
 
 /**

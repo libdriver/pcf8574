@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver PCF8574
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/pcf8574/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/pcf8574/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 PCF8574是一款矽CMOS電路。通過兩路雙向總線（I²C總線）為大多數微控制器系列提供通用遠程I/O擴展。器件由8位準雙向端口和I²C總線接口組成。 PCF8574具有低電流消耗且包含具備高電流驅動能力的鎖存輸出，用於直接驅動LED。還具有中斷線路(INT)，可連接至微控制器的中斷邏輯。通過在此線路發送中斷信號，遠程I/O可通知微控制器其端口上是否存在輸入數據而無需通過I²C總線通信。這表示PCF8574依然是簡單的從器件。 PCF8574用於LED和顯示器、服務器、鍵盤、工業控制、醫療設備、PLC、移動電話、移動設備、遊戲機和儀器測試測量。
 
-LibDriver PCF8574是LibDriver推出的PCF8574的全功能驅動，該驅動提供I/O寫入，I/O讀取等功能。
+LibDriver PCF8574是LibDriver推出的PCF8574的全功能驅動，該驅動提供I/O寫入，I/O讀取等功能並且它符合MISRA標準。
 
 ### 目錄
 
@@ -50,12 +50,12 @@ LibDriver PCF8574是LibDriver推出的PCF8574的全功能驅動，該驅動提�
 #### example basic
 
 ```C
-volatile uint8_t res;
+uint8_t res;
 pcf8574_pin_level_t level;
 
 /* basic init */
 res = pcf8574_basic_init(PCF8574_ADDRESS_A000);
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -64,25 +64,25 @@ if (res)
 
 /* read pin */
 res = pcf8574_basic_read(PCF8574_PIN_0, (pcf8574_pin_level_t *)&level);
-if (res)
+if (res != 0)
 {
-    pcf8574_basic_deinit();
+    (void)pcf8574_basic_deinit();
 
     return 1;
 }
 
 /* write pin */
 res = pcf8574_basic_write(PCF8574_PIN_0, PCF8574_PIN_LEVEL_HIGH);
-if (res)
+if (res != 0)
 {
-    pcf8574_basic_deinit();
+    (void)pcf8574_basic_deinit();
 
     return 1;
 }
 
 ...
 
-pcf8574_basic_deinit();
+(void)pcf8574_basic_deinit();
 
 return 0;
 ```
