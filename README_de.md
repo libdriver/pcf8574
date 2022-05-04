@@ -26,15 +26,15 @@ LibDriver PCF8574 ist ein Treiber mit vollem Funktionsumfang von PCF8574, der vo
 
 /src enthält LibDriver PCF8574-Quelldateien.
 
-/interface enthält die plattformunabhängige Vorlage LibDriver PCF8574 IIC。
+/interface enthält die plattformunabhängige Vorlage LibDriver PCF8574 IIC.
 
-/test enthält den Testcode des LibDriver PCF8574-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver PCF8574-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver PCF8574-Beispielcode.
 
 /doc enthält das LibDriver PCF8574-Offlinedokument.
 
-/Datenblatt enthält PCF8574-Datenblatt。
+/Datenblatt enthält PCF8574-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
