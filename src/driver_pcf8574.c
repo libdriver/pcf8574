@@ -156,7 +156,8 @@ uint8_t pcf8574_init(pcf8574_handle_t *handle)
                              (uint8_t *)&data, 1) != 0)                  /* write all pin high level */
     {
         handle->debug_print("pcf8574: iic write failed.\n");             /* iic write failed */
-       
+        (void)handle->iic_deinit();                                      /* iic deinit */
+        
         return 4;                                                        /* return error */
     }
     handle->inited = 1;                                                  /* flag finish initialization */
