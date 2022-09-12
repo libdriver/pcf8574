@@ -50,6 +50,8 @@ LibDriver PCF8574是LibDriver推出的PCF8574的全功能驅動，該驅動提�
 #### example basic
 
 ```C
+#include "driver_pcf8574_basic.h"
+
 uint8_t res;
 pcf8574_pin_level_t level;
 
