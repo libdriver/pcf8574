@@ -49,6 +49,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example basic
 
 ```C
+#include "driver_pcf8574_basic.h"
+
 uint8_t res;
 pcf8574_pin_level_t level;
 
