@@ -1,10 +1,10 @@
-### 1. Chip
+### 1. Board
 
-#### 1.1 Chip Info
+#### 1.1 Board Info
 
-chip name : Raspberry Pi 4B.
+Board Name: Raspberry Pi 4B.
 
-iic pin: SCL/SDA GPIO3/GPIO2.
+IIC Pin: SCL/SDA GPIO3/GPIO2.
 
 ### 2. Install
 
@@ -75,23 +75,41 @@ find_package(pcf8574 REQUIRED)
 
 #### 3.1 Command Instruction
 
-​          pcf8574 is a basic command which can test all pcf8574 driver function:
+1. Show pcf8574 chip and driver information.
 
-​          -i        show pcf8574 chip and driver information.
+   ```shell
+   pcf8574 (-i | --information)
+   ```
 
-​          -h       show pcf8574 help.
+2. Show pcf8574 help.
 
-​          -p       show pcf8574 pin connections of the current board.
+   ```shell
+   pcf8574 (-h | --help)
+   ```
 
-​          -t  (readwrite <times> -a  (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) )
+3. Show pcf8574 pin connections of the current board.
 
-​          -t readwrite <times> -a  (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)        run pcf8574 read write test.times means test times.
+   ```shell
+   pcf8574 (-p | --port)
+   ```
 
-​          -c basic (-i -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) -p (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)|-o (0 | 1) -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) -p (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7))
+4. Run pcf8574 read write test, num means test times.
 
-​          -c basic -i -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) -p (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)      run pcf8574 read function.
+   ```shell
+   pcf8574 (-t readwrite | --test=readwrite) [--addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--times=<num>]
+   ```
 
-​          -c basic -o (0 | 1) -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) -p (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)        run pcf8574 write function.
+5. Run pcf8574 read function.
+
+   ```shell
+   pcf8574 (-e input | --example=input) [--addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--pin=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>]
+   ```
+
+6. Run pcf8574 write function.
+
+   ```shell
+   pcf8574 (-e output | --example=output) [--addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--pin=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--level=<low | high>]
+   ```
 
 #### 3.2 Command Example
 
@@ -117,12 +135,12 @@ pcf8574: SDA connected to GPIO2(BCM).
 ```
 
 ```shell
-./pcf8574 -t readwrite 3 -a 0
+./pcf8574 -t readwrite --addr=0 --times=3
 
 pcf8574: chip is NXP PCF8574.
 pcf8574: manufacturer is NXP.
 pcf8574: interface is IIC.
-pcf8574: driver version is 2.0.
+pcf8574: driver version is 1.0.
 pcf8574: min supply voltage is 2.5V.
 pcf8574: max supply voltage is 6.0V.
 pcf8574: max current is 200.00mA.
@@ -130,7 +148,7 @@ pcf8574: max temperature is 85.0C.
 pcf8574: min temperature is -40.0C.
 pcf8574: start read write test.
 pcf8574: read PIN 0 is 1.
-pcf8574: read PIN 1 is 0.
+pcf8574: read PIN 1 is 1.
 pcf8574: read PIN 2 is 1.
 pcf8574: read PIN 3 is 1.
 pcf8574: write PIN 4 low.
@@ -138,7 +156,7 @@ pcf8574: write PIN 5 high.
 pcf8574: write PIN 6 low.
 pcf8574: write PIN 7 high.
 pcf8574: read PIN 0 is 1.
-pcf8574: read PIN 1 is 0.
+pcf8574: read PIN 1 is 1.
 pcf8574: read PIN 2 is 1.
 pcf8574: read PIN 3 is 1.
 pcf8574: write PIN 4 low.
@@ -146,7 +164,7 @@ pcf8574: write PIN 5 high.
 pcf8574: write PIN 6 low.
 pcf8574: write PIN 7 high.
 pcf8574: read PIN 0 is 1.
-pcf8574: read PIN 1 is 0.
+pcf8574: read PIN 1 is 1.
 pcf8574: read PIN 2 is 1.
 pcf8574: read PIN 3 is 1.
 pcf8574: write PIN 4 low.
@@ -157,13 +175,13 @@ pcf8574: finish read write test.
 ```
 
 ```shell
-./pcf8574 -c basic -i -a 0 -p 1 
+./pcf8574 -e input --addr=0 --pin=1
 
-pcf8574: read 1 pin is 0.
+pcf8574: read 1 pin is 1.
 ```
 
 ```shell
-./pcf8574 -c basic -o 0 -a 0 -p 7  
+./pcf8574 -e output --addr=0 --pin=7 --level=LOW
 
 pcf8574: write 7 pin level 0.
 ```
@@ -171,17 +189,28 @@ pcf8574: write 7 pin level 0.
 ```shell
 ./pcf8574 -h
 
-pcf8574 -i
-	show pcf8574 chip and driver information.
-pcf8574 -h
-	show pcf8574 help.
-pcf8574 -p
-	show pcf8574 pin connections of the current board.
-pcf8574 -t readwrite <times> -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)
-	run pcf8574 read write test.times means test times.
-pcf8574 -c basic -i -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) -p (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)
-	run pcf8574 read function.
-pcf8574 -c basic -o (0 | 1) -a (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7) -p (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7)
-	run pcf8574 write function.
+Usage:
+  pcf8574 (-i | --information)
+  pcf8574 (-h | --help)
+  pcf8574 (-p | --port)
+  pcf8574 (-t readwrite | --test=readwrite) [--addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--times=<num>]
+  pcf8574 (-e input | --example=input) [--addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--pin=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>]
+  pcf8574 (-e output | --example=output) [--addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>] [--pin=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>]
+          [--level=<LOW | HIGH>]
+
+Options:
+      --addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>
+                              Set the addr pin.([default: 0])
+  -e <input | outoput>, --example=<input | output>
+                              Run the driver example.
+  -h, --help                  Show the help.
+  -i, --information           Show the chip information.
+  -p, --port                  Display the pin connections of the current board.
+      --pin=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>
+                              Set the used pin.([default: 0])
+      --level=<LOW | HIGH>    Set the output level.([default: LOW])
+  -t <readwrite>, --test=<readwrite>
+                              Run the driver test.
+      --times=<num>           Set the running times.([default: 3])
 ```
 
