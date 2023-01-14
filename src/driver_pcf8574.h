@@ -101,10 +101,10 @@ typedef enum
 typedef struct pcf8574_handle_s
 {
     uint8_t iic_addr;                                                          /**< iic device address */
-    uint8_t (*iic_init)(void);                                                 /**< point to a iic_init function address */
-    uint8_t (*iic_deinit)(void);                                               /**< point to a iic_deinit function address */
-    uint8_t (*iic_read_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);         /**< point to a iic_read_cmd function address */
-    uint8_t (*iic_write_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);        /**< point to a iic_write_cmd function address */
+    uint8_t (*iic_init)(void);                                                 /**< point to an iic_init function address */
+    uint8_t (*iic_deinit)(void);                                               /**< point to an iic_deinit function address */
+    uint8_t (*iic_read_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);         /**< point to an iic_read_cmd function address */
+    uint8_t (*iic_write_cmd)(uint8_t addr, uint8_t *buf, uint16_t len);        /**< point to an iic_write_cmd function address */
     void (*delay_ms)(uint32_t ms);                                             /**< point to a delay_ms function address */
     void (*debug_print)(const char *const fmt, ...);                           /**< point to a debug_print function address */
     uint8_t inited;                                                            /**< inited flag */
@@ -148,7 +148,7 @@ typedef struct pcf8574_info_s
 /**
  * @brief     link iic_init function
  * @param[in] HANDLE points to a pcf8574 handle structure
- * @param[in] FUC points to a iic_init function address
+ * @param[in] FUC points to an iic_init function address
  * @note      none
  */
 #define DRIVER_PCF8574_LINK_IIC_INIT(HANDLE, FUC)            (HANDLE)->iic_init = FUC
@@ -156,7 +156,7 @@ typedef struct pcf8574_info_s
 /**
  * @brief     link iic_deinit function
  * @param[in] HANDLE points to a pcf8574 handle structure
- * @param[in] FUC points to a iic_deinit function address
+ * @param[in] FUC points to an iic_deinit function address
  * @note      none
  */
 #define DRIVER_PCF8574_LINK_IIC_DEINIT(HANDLE, FUC)          (HANDLE)->iic_deinit = FUC
@@ -164,7 +164,7 @@ typedef struct pcf8574_info_s
 /**
  * @brief     link iic_read_cmd function
  * @param[in] HANDLE points to a pcf8574 handle structure
- * @param[in] FUC points to a iic_read_cmd function address
+ * @param[in] FUC points to an iic_read_cmd function address
  * @note      none
  */
 #define DRIVER_PCF8574_LINK_IIC_READ_COMMAND(HANDLE, FUC)    (HANDLE)->iic_read_cmd = FUC
@@ -172,7 +172,7 @@ typedef struct pcf8574_info_s
 /**
  * @brief     link iic_write_cmd function
  * @param[in] HANDLE points to a pcf8574 handle structure
- * @param[in] FUC points to a iic_write_cmd function address
+ * @param[in] FUC points to an iic_write_cmd function address
  * @note      none
  */
 #define DRIVER_PCF8574_LINK_IIC_WRITE_COMMAND(HANDLE, FUC)   (HANDLE)->iic_write_cmd = FUC

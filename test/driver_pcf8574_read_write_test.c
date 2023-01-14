@@ -77,7 +77,7 @@ uint8_t pcf8574_read_write_test(pcf8574_address_t addr, uint32_t times)
         pcf8574_interface_debug_print("pcf8574: chip is %s.\n", info.chip_name);
         pcf8574_interface_debug_print("pcf8574: manufacturer is %s.\n", info.manufacturer_name);
         pcf8574_interface_debug_print("pcf8574: interface is %s.\n", info.interface);
-        pcf8574_interface_debug_print("pcf8574: driver version is %d.%d.\n", info.driver_version/1000, (info.driver_version%1000)/100);
+        pcf8574_interface_debug_print("pcf8574: driver version is %d.%d.\n", info.driver_version / 1000, (info.driver_version % 1000) / 100);
         pcf8574_interface_debug_print("pcf8574: min supply voltage is %0.1fV.\n", info.supply_voltage_min_v);
         pcf8574_interface_debug_print("pcf8574: max supply voltage is %0.1fV.\n", info.supply_voltage_max_v);
         pcf8574_interface_debug_print("pcf8574: max current is %0.2fmA.\n", info.max_current_ma);
