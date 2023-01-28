@@ -39,6 +39,8 @@ LibDriver PCF8574 is a full function driver of PCF8574 launched by LibDriver.It 
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
+/misra includes the LibDriver MISRA code scanning results.
+
 ### Install
 
 Reference /interface IIC platform independent template and finish your platform IIC driver.
