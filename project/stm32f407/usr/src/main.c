@@ -77,7 +77,7 @@ uint8_t pcf8574(uint8_t argc, char **argv)
         {"times", required_argument, NULL, 4},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint32_t times = 3;
     pcf8574_address_t addr = PCF8574_ADDRESS_A000;
     pcf8574_pin_t pin = PCF8574_PIN_0;
@@ -370,7 +370,7 @@ uint8_t pcf8574(uint8_t argc, char **argv)
         pcf8574_interface_debug_print("Options:\n");
         pcf8574_interface_debug_print("      --addr=<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7>\n");
         pcf8574_interface_debug_print("                              Set the addr pin.([default: 0])\n");
-        pcf8574_interface_debug_print("  -e <input | outoput>, --example=<input | output>\n");
+        pcf8574_interface_debug_print("  -e <input | output>, --example=<input | output>\n");
         pcf8574_interface_debug_print("                              Run the driver example.\n");
         pcf8574_interface_debug_print("  -h, --help                  Show the help.\n");
         pcf8574_interface_debug_print("  -i, --information           Show the chip information.\n");
@@ -433,7 +433,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
     
-    /* shell init && register pcf8574 fuction */
+    /* shell init && register pcf8574 function */
     shell_init();
     shell_register("pcf8574", pcf8574);
     uart_print("pcf8574: welcome to libdriver pcf8574.\n");
@@ -456,7 +456,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("pcf8574: unknow command.\n");
+                uart_print("pcf8574: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -472,7 +472,7 @@ int main(void)
             }
             else
             {
-                uart_print("pcf8574: unknow status code.\n");
+                uart_print("pcf8574: unknown status code.\n");
             }
             uart_flush();
         }
