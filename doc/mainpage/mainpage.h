@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver PCF8574
- * @brief     libdriver pcf8574 is a full function driver of pcf8574 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver PCF8574 is a full function driver of PCF8574 and it can run in both MCU and Linux platform.
  * @version   1.0.0
  * @author    Shifeng Li
  * @date      2021-08-29
