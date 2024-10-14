@@ -271,6 +271,7 @@ uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_l
        
         return 1;                                                             /* return error */
     }
+    data &= ~(1 << pin);                                                      /* clear 0 */
     data |= level << pin;                                                     /* set data */
     res = handle->iic_write_cmd(handle->iic_addr, (uint8_t *)&data, 1);       /* write data */
     if (res != 0)                                                             /* check error */
