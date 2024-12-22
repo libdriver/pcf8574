@@ -50,8 +50,8 @@
 
 /**
  * @brief     set the address pin
- * @param[in] *handle points to a pcf8574 handle structure
- * @param[in] addr_pin is the chip address pins
+ * @param[in] *handle pointer to a pcf8574 handle structure
+ * @param[in] addr_pin chip address pins
  * @return    status code
  *            - 0 success
  *            - 2 handle is NULL
@@ -72,8 +72,8 @@ uint8_t pcf8574_set_addr_pin(pcf8574_handle_t *handle, pcf8574_address_t addr_pi
 
 /**
  * @brief      get the address pin
- * @param[in]  *handle points to a pcf8574 handle structure
- * @param[out] *addr_pin points to a chip address pins buffer
+ * @param[in]  *handle pointer to a pcf8574 handle structure
+ * @param[out] *addr_pin pointer to a chip address pins buffer
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -93,7 +93,7 @@ uint8_t pcf8574_get_addr_pin(pcf8574_handle_t *handle, pcf8574_address_t *addr_p
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a pcf8574 handle structure
+ * @param[in] *handle pointer to a pcf8574 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic initialization failed
@@ -167,7 +167,7 @@ uint8_t pcf8574_init(pcf8574_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a pcf8574 handle structure
+ * @param[in] *handle pointer to a pcf8574 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic deinit failed
@@ -202,9 +202,9 @@ uint8_t pcf8574_deinit(pcf8574_handle_t *handle)
 
 /**
  * @brief      read the pin
- * @param[in]  *handle points to a pcf8574 handle structure
- * @param[in]  pin is the read pin
- * @param[out] *level points to a level buffer
+ * @param[in]  *handle pointer to a pcf8574 handle structure
+ * @param[in]  pin read pin
+ * @param[out] *level pointer to a level buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -240,9 +240,9 @@ uint8_t pcf8574_read(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_le
 
 /**
  * @brief     write the pin
- * @param[in] *handle points to a pcf8574 handle structure
- * @param[in] pin is the read pin
- * @param[in] level is the pin level
+ * @param[in] *handle pointer to a pcf8574 handle structure
+ * @param[in] pin written pin
+ * @param[in] level pin level
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -286,9 +286,9 @@ uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_l
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a pcf8574 handle structure
- * @param[in] *buf points to a data buffer.
- * @param[in] len is the data buffer
+ * @param[in] *handle pointer to a pcf8574 handle structure
+ * @param[in] *buf pointer to a data buffer.
+ * @param[in] len data buffer length
  * @return    status code
  *            - 0 success
  *            - 1 write failed
@@ -319,9 +319,9 @@ uint8_t pcf8574_set_reg(pcf8574_handle_t *handle, uint8_t *buf, uint16_t len)
 
 /**
  * @brief      get the chip register
- * @param[in]  *handle points to a pcf8574 handle structure
- * @param[out] *buf points to a data buffer.
- * @param[in]  len is the data buffer
+ * @param[in]  *handle pointer to a pcf8574 handle structure
+ * @param[out] *buf pointer to a data buffer.
+ * @param[in]  len data buffer length
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -352,7 +352,7 @@ uint8_t pcf8574_get_reg(pcf8574_handle_t *handle, uint8_t *buf, uint16_t len)
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a pcf8574 info structure
+ * @param[out] *info pointer to a pcf8574 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

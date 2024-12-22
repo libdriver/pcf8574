@@ -52,7 +52,7 @@ extern "C"{
 
 /**
  * @brief     basic example init
- * @param[in] addr is the iic device address
+ * @param[in] addr iic device address
  * @return    status code
  *            - 0 success
  *            - 1 init failed
@@ -71,8 +71,8 @@ uint8_t pcf8574_basic_deinit(void);
 
 /**
  * @brief      basic example read
- * @param[in]  pin is the read pin
- * @param[out] *level points to a pin level buffer
+ * @param[in]  pin read pin
+ * @param[out] *level pointer to a pin level buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -82,8 +82,8 @@ uint8_t pcf8574_basic_read(pcf8574_pin_t pin, pcf8574_pin_level_t *level);
 
 /**
  * @brief     basic example write
- * @param[in] pin is the write pin
- * @param[in] level is the pin level
+ * @param[in] pin written pin
+ * @param[in] level pin level
  * @return    status code
  *            - 0 success
  *            - 1 write failed

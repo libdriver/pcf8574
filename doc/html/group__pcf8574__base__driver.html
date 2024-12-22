@@ -333,7 +333,7 @@ Functions</h2></td></tr>
 <p>close the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -379,8 +379,8 @@ Functions</h2></td></tr>
 <p>get the address pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*addr_pin</td><td>points to a chip address pins buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*addr_pin</td><td>pointer to a chip address pins buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -430,9 +430,9 @@ Functions</h2></td></tr>
 <p>get the chip register </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*buf</td><td>points to a data buffer. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>is the data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*buf</td><td>pointer to a data buffer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>data buffer length </td></tr>
   </table>
   </dd>
 </dl>
@@ -468,7 +468,7 @@ Functions</h2></td></tr>
 <p>get chip's information </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>points to a pcf8574 info structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>pointer to a pcf8574 info structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -502,7 +502,7 @@ Functions</h2></td></tr>
 <p>initialize the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -555,9 +555,9 @@ Functions</h2></td></tr>
 <p>read the pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>is the read pin </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>points to a level buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>read pin </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*level</td><td>pointer to a level buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -603,8 +603,8 @@ Functions</h2></td></tr>
 <p>set the address pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">addr_pin</td><td>is the chip address pins </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">addr_pin</td><td>chip address pins </td></tr>
   </table>
   </dd>
 </dl>
@@ -654,9 +654,9 @@ Functions</h2></td></tr>
 <p>set the chip register </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*buf</td><td>points to a data buffer. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>is the data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*buf</td><td>pointer to a data buffer. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>data buffer length </td></tr>
   </table>
   </dd>
 </dl>
@@ -708,9 +708,9 @@ Functions</h2></td></tr>
 <p>write the pin </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>is the read pin </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>is the pin level </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">pin</td><td>written pin </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">level</td><td>pin level </td></tr>
   </table>
   </dd>
 </dl>
