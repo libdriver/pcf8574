@@ -290,6 +290,17 @@ uint8_t pcf8574_read(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_le
 uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_level_t level);
 
 /**
+ * @}
+ */
+
+/**
+ * @defgroup pcf8574_extern_driver pcf8574 extern driver function
+ * @brief    pcf8574 extern driver modules
+ * @ingroup  pcf8574_driver
+ * @{
+ */
+
+/**
  * @brief     set the chip register
  * @param[in] *handle pointer to a pcf8574 handle structure
  * @param[in] *buf pointer to a data buffer.

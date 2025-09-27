@@ -174,12 +174,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga851613993cb2b8df78017312c8d6708a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pcf8574__base__driver.html#ga851613993cb2b8df78017312c8d6708a">pcf8574_write</a> (<a class="el" href="group__pcf8574__base__driver.html#ga919c0d62922ee59921a6aa66bbb96ca8">pcf8574_handle_t</a> *handle, <a class="el" href="group__pcf8574__base__driver.html#gad53c671ce4d626863ab6b09014035ad6">pcf8574_pin_t</a> pin, <a class="el" href="group__pcf8574__base__driver.html#ga94207e0a8b6fc678e704109a4496d08e">pcf8574_pin_level_t</a> level)</td></tr>
 <tr class="memdesc:ga851613993cb2b8df78017312c8d6708a"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the pin  <a href="group__pcf8574__base__driver.html#ga851613993cb2b8df78017312c8d6708a">More...</a><br /></td></tr>
 <tr class="separator:ga851613993cb2b8df78017312c8d6708a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaba88a1ce5185cada1cc3e9650625e648"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pcf8574__base__driver.html#gaba88a1ce5185cada1cc3e9650625e648">pcf8574_set_reg</a> (<a class="el" href="group__pcf8574__base__driver.html#ga919c0d62922ee59921a6aa66bbb96ca8">pcf8574_handle_t</a> *handle, uint8_t *buf, uint16_t len)</td></tr>
-<tr class="memdesc:gaba88a1ce5185cada1cc3e9650625e648"><td class="mdescLeft">&#160;</td><td class="mdescRight">set the chip register  <a href="group__pcf8574__base__driver.html#gaba88a1ce5185cada1cc3e9650625e648">More...</a><br /></td></tr>
-<tr class="separator:gaba88a1ce5185cada1cc3e9650625e648"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa159b5293b631e002256162e0db87169"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pcf8574__base__driver.html#gaa159b5293b631e002256162e0db87169">pcf8574_get_reg</a> (<a class="el" href="group__pcf8574__base__driver.html#ga919c0d62922ee59921a6aa66bbb96ca8">pcf8574_handle_t</a> *handle, uint8_t *buf, uint16_t len)</td></tr>
-<tr class="memdesc:gaa159b5293b631e002256162e0db87169"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the chip register  <a href="group__pcf8574__base__driver.html#gaa159b5293b631e002256162e0db87169">More...</a><br /></td></tr>
-<tr class="separator:gaa159b5293b631e002256162e0db87169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>pcf8574 base driver modules </p>
@@ -395,60 +389,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="gaa159b5293b631e002256162e0db87169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa159b5293b631e002256162e0db87169">&#9670;&nbsp;</a></span>pcf8574_get_reg()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t pcf8574_get_reg </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__pcf8574__base__driver.html#ga919c0d62922ee59921a6aa66bbb96ca8">pcf8574_handle_t</a> *&#160;</td>
-          <td class="paramname"><em>handle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>get the chip register </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*buf</td><td>pointer to a data buffer. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>data buffer length </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>status code<ul>
-<li>0 success</li>
-<li>1 read failed</li>
-<li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>none </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="driver__pcf8574_8c_source.html#l00332">332</a> of file <a class="el" href="driver__pcf8574_8c_source.html">driver_pcf8574.c</a>.</p>
-
-</div>
-</div>
 <a id="ga0445361ae83f601d96ce5190c958c7fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga0445361ae83f601d96ce5190c958c7fb">&#9670;&nbsp;</a></span>pcf8574_info()</h2>
 
@@ -616,60 +556,6 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="driver__pcf8574_8c_source.html#l00060">60</a> of file <a class="el" href="driver__pcf8574_8c_source.html">driver_pcf8574.c</a>.</p>
-
-</div>
-</div>
-<a id="gaba88a1ce5185cada1cc3e9650625e648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaba88a1ce5185cada1cc3e9650625e648">&#9670;&nbsp;</a></span>pcf8574_set_reg()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t pcf8574_set_reg </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__pcf8574__base__driver.html#ga919c0d62922ee59921a6aa66bbb96ca8">pcf8574_handle_t</a> *&#160;</td>
-          <td class="paramname"><em>handle</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>buf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>len</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>set the chip register </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to a pcf8574 handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">*buf</td><td>pointer to a data buffer. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">len</td><td>data buffer length </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>status code<ul>
-<li>0 success</li>
-<li>1 write failed</li>
-<li>2 handle is NULL</li>
-<li>3 handle is not initialized </li>
-</ul>
-</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>none </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="driver__pcf8574_8c_source.html#l00299">299</a> of file <a class="el" href="driver__pcf8574_8c_source.html">driver_pcf8574.c</a>.</p>
 
 </div>
 </div>
