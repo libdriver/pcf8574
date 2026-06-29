@@ -104,6 +104,7 @@ var NAVTREEINDEX0 =
 "pages.html":[],
 "structpcf8574__handle__s.html":[0,0,1,0],
 "structpcf8574__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f":[0,0,1,0,7],
+"structpcf8574__handle__s.html#a315c4ad01b32d2a14acb284faa5cf7b9":[0,0,1,0,8],
 "structpcf8574__handle__s.html#a406c9433252b7366de417b7a60915c81":[0,0,1,0,1],
 "structpcf8574__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b":[0,0,1,0,0],
 "structpcf8574__handle__s.html#a8826dd07625f8d90859ce9bd09628d61":[0,0,1,0,4],
