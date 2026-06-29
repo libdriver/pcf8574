@@ -43,7 +43,7 @@
 #define MANUFACTURER_NAME         "NXP"                /**< manufacturer name */
 #define SUPPLY_VOLTAGE_MIN        2.5f                 /**< chip min supply voltage */
 #define SUPPLY_VOLTAGE_MAX        6.0f                 /**< chip max supply voltage */
-#define MAX_CURRENT               200.0f               /**< chip max current */
+#define MAX_CURRENT               80.0f                /**< chip max current */
 #define TEMPERATURE_MIN           -40.0f               /**< chip min operating temperature */
 #define TEMPERATURE_MAX           85.0f                /**< chip max operating temperature */
 #define DRIVER_VERSION            1000                 /**< driver version */
@@ -160,6 +160,7 @@ uint8_t pcf8574_init(pcf8574_handle_t *handle)
         
         return 4;                                                        /* return error */
     }
+    handle->output_shadow = 0xFF;                                        /* set 0xFF */
     handle->inited = 1;                                                  /* flag finish initialization */
     
     return 0;                                                            /* success return 0 */
@@ -253,35 +254,27 @@ uint8_t pcf8574_read(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_le
 uint8_t pcf8574_write(pcf8574_handle_t *handle, pcf8574_pin_t pin, pcf8574_pin_level_t level)
 {
     uint8_t res;
-    uint8_t data;
     
-    if (handle == NULL)                                                       /* check handle */
+    if (handle == NULL)                                                                         /* check handle */
     {
-        return 2;                                                             /* return error */
+        return 2;                                                                               /* return error */
     }
-    if (handle->inited != 1)                                                  /* check handle initialization */
+    if (handle->inited != 1)                                                                    /* check handle initialization */
     {
-        return 3;                                                             /* return error */
+        return 3;                                                                               /* return error */
     }
     
-    res = handle->iic_read_cmd(handle->iic_addr, (uint8_t *)&data, 1);        /* read data */
-    if (res != 0)                                                             /* check error */
+    handle->output_shadow &= ~(1 << pin);                                                       /* clear 0 */
+    handle->output_shadow |= level << pin;                                                      /* set data */
+    res = handle->iic_write_cmd(handle->iic_addr, (uint8_t *)&handle->output_shadow, 1);        /* write data */
+    if (res != 0)                                                                               /* check error */
     {
-        handle->debug_print("pcf8574: iic read failed.\n");                   /* iic read failed */
+        handle->debug_print("pcf8574: iic write failed.\n");                                    /* iic write failed */
        
-        return 1;                                                             /* return error */
-    }
-    data &= ~(1 << pin);                                                      /* clear 0 */
-    data |= level << pin;                                                     /* set data */
-    res = handle->iic_write_cmd(handle->iic_addr, (uint8_t *)&data, 1);       /* write data */
-    if (res != 0)                                                             /* check error */
-    {
-        handle->debug_print("pcf8574: iic write failed.\n");                  /* iic write failed */
-       
-        return 1;                                                             /* return error */
+        return 1;                                                                               /* return error */
     }
     
-    return 0;                                                                 /* success return 0 */
+    return 0;                                                                                   /* success return 0 */
 }
 
 /**

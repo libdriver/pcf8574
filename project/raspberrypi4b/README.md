@@ -122,7 +122,7 @@ pcf8574: interface is IIC.
 pcf8574: driver version is 1.0.
 pcf8574: min supply voltage is 2.5V.
 pcf8574: max supply voltage is 6.0V.
-pcf8574: max current is 200.00mA.
+pcf8574: max current is 80.00mA.
 pcf8574: max temperature is 85.0C.
 pcf8574: min temperature is -40.0C.
 ```

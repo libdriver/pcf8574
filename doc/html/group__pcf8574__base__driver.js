@@ -8,7 +8,8 @@ var group__pcf8574__base__driver =
       [ "iic_init", "structpcf8574__handle__s.html#a8826dd07625f8d90859ce9bd09628d61", null ],
       [ "iic_read_cmd", "structpcf8574__handle__s.html#acebeabb312305acedcb64f4f10755117", null ],
       [ "iic_write_cmd", "structpcf8574__handle__s.html#af9cb104d353f0c18dbb0fd01405f4889", null ],
-      [ "inited", "structpcf8574__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f", null ]
+      [ "inited", "structpcf8574__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f", null ],
+      [ "output_shadow", "structpcf8574__handle__s.html#a315c4ad01b32d2a14acb284faa5cf7b9", null ]
     ] ],
     [ "pcf8574_info_s", "structpcf8574__info__s.html", [
       [ "chip_name", "structpcf8574__info__s.html#af890958c72bd715cc6454a10dc846ae6", null ],
